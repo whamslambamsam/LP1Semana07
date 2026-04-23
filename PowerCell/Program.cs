@@ -1,10 +1,58 @@
 using System;
+using System.Collections.Concurrent;
+using System.Diagnostics.Tracing;
 using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime;
+using System.Security.Authentication;
 
 namespace PowerCell
 {
     public class Program
     {
+        public class Cell
+        {
+            private float charge;
+            readonly string Name;
+            public static float Charge
+            {
+                get
+                {
+                    return Charge;
+                }
+                set
+                {
+                    Charge = Charge;
+                    if (Charge > 200)
+                    {
+                        Charge = 200;
+                    }
+                    else if (Charge < 0)
+                    {
+                        Charge = 0;
+                    }
+                }
+            }
+            
+            readonly int Level = 1 + Convert.ToInt32(Charge) / 40;
+
+            public float Consume(float amount)
+            {
+                return Charge -= amount;
+            }
+            
+            public float Restore()
+            {
+                return Charge = 200;
+            }
+
+            public Cell(string name)
+            {
+                Name = name;
+                charge = 200;
+                Charge = charge;
+            }
+        }
         // Argumentos:
         // args[0]: Nome da célula
         // args[1]: Número de consumos
