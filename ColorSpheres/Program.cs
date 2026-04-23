@@ -1,12 +1,21 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace ColorSpheres
 {
-    public class Program
+    public class Color
     {
-        private static void Main(string[] args)
+        public int red;
+        public int green;
+        public int blue;
+        public int alpha;
+
+        public RGB(int r, int g, int b)
         {
-            Console.WriteLine("Hello LP!");
+            red = r;
+            green = g;
+            blue = b;
+            alpha = 255;
         }
     }
 }
