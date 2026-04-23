@@ -52,7 +52,13 @@ namespace PowerCell
                 charge = 200;
                 Charge = charge;
             }
+
+            public override string ToString()
+            {
+                return $"[{Name}] Level {Level}:  {Charge:F0}/200";
+            }
         }
+
         // Argumentos:
         // args[0]: Nome da célula
         // args[1]: Número de consumos
